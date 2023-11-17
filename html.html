@@ -1,17 +1,120 @@
-<!DOCTYPE html>
-<html lang="en">
+<body onload="load_page()">
+    <div class="container">
+        <div class="form">
+
+            <div>
+                <label for="num_1">Primer numero</label>
+                <input type="text" id="num_one" placeholder="digite el primer numero" >
+            </div>
+           <div>
+                <label for="num_2">Segundo numero</label>
+                <input type="text" id="num_two" placeholder="digite el segundo numero">
+           </div>
+           <div>
+                <button onclick="calcular()">Calcular</button>
+           </div>
+           <div id="row">
+                <label for="" id="print"></label>
+          </div>
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <script>
+
+    function load_page(){
+
+        document.getElementById("num_one").focus();
+    }
+
+    
+
+
+        function calcular(){
+            var num_one = document.getElementById("num_one").value;
+            var num_two = document.getElementById("num_two").value;
+            var print = document.getElementById("print");
+             
+             if (!num_one.trim() || !num_two.trim()) {
+                Swal.fire({
+                    icon: 'question',
+                    title: 'Ingrese datos numericos',
+                    showConfirmButton: false,
+                    timer: 3000
+                });
+            
+            }
+              
+          
+            if(isNaN(num_one) || isNaN(num_two)){
+               
+                alert("por favor ingrese un numero");
+                
+            }
+            var resultado = "";
+            for(var i = parseInt(num_one); i <= parseInt(num_two); i += 2 ){
+                resultado +=i + "-";
+            }
+            print.innerText = resultado;
+
+                
+         
+      
+
+        
+        // document.getElementById('row').innerHTML = '';
+
+    
+        // for (var i = 0; i < num_one.length; i++) {
+        //   var letra = num_one.charAt(i);
+        //   document.getElementById('row').innerHTML += letra + '<br>';
+        // }
+        }
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Pirámide en JavaScript</title>
 </head>
 <body>
-    <label for="Nombres">Ingresa los nombres (separados por comas): </label>
-    <input type="texto" id="Nombres" />
-    <button onclick="mostrarNombresVerticales()">Mostrar en Vertical</button>
+  <h1>Generador de Pirámides</h1>
+  <p>Ingresa el número de pisos para la pirámide:</p>
+  <input type="number" id="numPisosInput">
+  <button onclick="dibujarPiramide()">Dibujar Pirámide</button>
+  <pre id="resultado"></pre>
 
-    <div id="resultado"></div>
+  <script>
+    function dibujarPiramide() {
+      const numPisos = parseInt(document.getElementById('numPisosInput').value);
+      const resultado = document.getElementById('resultado');
+      resultado.innerText = ''; // Limpiar el resultado anterior
 
-    <script src="funtion.js"></script>
+      if (!isNaN(numPisos) && numPisos > 0) {
+        resultado.innerText += `Pirámide con ${numPisos} pisos:\n`;
+        for (let i = 1; i <= numPisos; i++) {
+          let linea = '';
+          for (let j = 1; j <= numPisos - i; j++) {
+            linea += ' ';
+          }
+          for (let k = 1; k <= i; k++) {
+            linea += k;
+          }
+          for (let l = i - 1; l >= 1; l--) {
+            linea += l;
+          }
+          resultado.innerText += `${linea}\n`;
+        }
+      } else {
+        resultado.innerText = 'Por favor, ingresa un número válido mayor que cero.';
+      }
+    }
+  </script>
 </body>
-</html>
+</html> -->
